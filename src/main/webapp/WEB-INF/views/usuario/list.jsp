@@ -4,12 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Perfil</title>
+<title>Usuários</title>
 <link type="text/css" rel="stylesheet" href="<c:url value="/css/style.css"/>">
 </head>
 <body>
 	<fieldset>
-		<legend>Perfil</legend>
+		<legend>Lista de Usuários</legend>
 		<table class="table">
 			<tr>
 				<th>Nome do Usuário</th>
@@ -18,7 +18,8 @@
 				<th>Perfil</th>
 				<th>Ação</th>
 			</tr>
-			<tr>
+			<c:forEach var="usuario" items="${usuarios}" varStatus="i">
+			<tr bgcolor="${i.count % 2 != 0 ? '#f1f1f1' : 'white'}">
 				<td>${usuario.nome}</td>
 				<td>${usuario.email}</td>
 				<td>${usuario.dataCadastro}</td>
@@ -29,6 +30,7 @@
 				</td>
 				
 			</tr>
+			</c:forEach>
 		</table>
 	</fieldset>
 </body>
