@@ -36,7 +36,7 @@ fieldset.group .campo {
 <body>
 	
 	<c:url var="save" value="/usuario/save"/>
-	<form:form modelAttribute="usuario" action="${save}}" method="post" enctype="multipart/form-data">
+	<form:form modelAttribute="usuario" action="${save}" method="post" enctype="multipart/form-data">
 		
 		<form:hidden path="id"/>
 		<fieldset>

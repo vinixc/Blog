@@ -19,13 +19,13 @@ public class SpringMvcConfig implements WebMvcConfigurer{
 	public MultipartResolver multipartResolver() {
 		CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver();
 		multipartResolver.setMaxUploadSize(100000); //100k
-		return multipartResolver();
+		return multipartResolver;
 	}
 	
 	@Bean(name = "jspViewResolver")
 	public InternalResourceViewResolver resourceViewResolver() {
 		InternalResourceViewResolver resolver =  new InternalResourceViewResolver();
-		resolver.setPrefix("WEB-INF/views/");
+		resolver.setPrefix("/WEB-INF/views/");
 		resolver.setSuffix(".jsp");
 		resolver.setViewClass(JstlView.class);
 		return resolver;

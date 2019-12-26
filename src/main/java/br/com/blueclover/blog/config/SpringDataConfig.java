@@ -53,7 +53,7 @@ public class SpringDataConfig {
 	}
 	
 	@Bean
-	private DataSource dataSource() {
+	public DataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setUsername(env.getProperty("jdbc.user"));
 		dataSource.setPassword(env.getProperty("jdbc.pass"));
