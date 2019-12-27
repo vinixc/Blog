@@ -2,6 +2,7 @@ package br.com.blueclover.blog.service;
 
 import java.io.IOException;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -14,6 +15,8 @@ import br.com.blueclover.blog.repository.AvatarRepository;
 @Service
 @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
 public class AvatarService {
+	
+	private static final Logger LOG = Logger.getLogger(AvatarService.class);
 	
 	@Autowired
 	private AvatarRepository repository;
@@ -32,7 +35,7 @@ public class AvatarService {
 				avatar.setTipo(file.getContentType());
 				avatar.setAvatar(file.getBytes());
 			} catch (IOException e) {
-				e.printStackTrace();
+				LOG.error("Ocorreu um erro em AvatarService:  " + e.getMessage());
 			}
 		}
 		return avatar;
