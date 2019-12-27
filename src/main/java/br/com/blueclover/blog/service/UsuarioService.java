@@ -19,6 +19,12 @@ public class UsuarioService {
 	
 	@Autowired
 	private UsuarioRepository repository;
+	
+	@Transactional(readOnly = false)
+	public void updateNomeAndEmail(Usuario usuario) {
+		repository.updateNomeAndEmail(usuario.getNome(), usuario.getEmail(), usuario.getId());
+		
+	}
 
 	@Transactional(readOnly = false)
 	public void save(Usuario usuario) {
