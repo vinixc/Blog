@@ -21,6 +21,12 @@ public class UsuarioService {
 	private UsuarioRepository repository;
 	
 	@Transactional(readOnly = false)
+	public void updateSenha(Usuario usuario) {
+		String hash = new BCryptPasswordEncoder().encode(usuario.getSenha());
+		repository.updateSenha(hash, usuario.getId());
+	}
+	
+	@Transactional(readOnly = false)
 	public void updateNomeAndEmail(Usuario usuario) {
 		repository.updateNomeAndEmail(usuario.getNome(), usuario.getEmail(), usuario.getId());
 		
@@ -58,4 +64,6 @@ public class UsuarioService {
 	public List<Usuario> findAll(){
 		return repository.findAll();
 	}
+
+	
 }	
