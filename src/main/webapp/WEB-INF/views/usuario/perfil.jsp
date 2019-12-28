@@ -22,9 +22,9 @@
 				<th>Ação</th>
 			</tr>
 			<tr>
-				<td><img
-					src="<c:url value="/avatar/load/${usuario.avatar.id}"/>"
-					style="width: 25px; heigth: 25px;" />
+				<td><a href="<c:url value="/avatar/update/${usuario.avatar.id }"/>" title="Editar Avatar">
+					<img src="<c:url value="/avatar/load/${usuario.avatar.id}"/>"
+					style="width:25px;heigth:25px;"/></a>
 				</td>
 				<td>${usuario.nome}</td>
 				<td>${usuario.email}</td>
