@@ -38,5 +38,10 @@ public class AutorService {
 	public Autor findById(Long id) {
 		return autorRepository.findById(id).get();
 	}
+	
+	@Transactional(readOnly = false)
+	public void delete(Long id) {
+		autorRepository.deleteById(id);
+	}
 
 }

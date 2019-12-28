@@ -1,5 +1,9 @@
 package br.com.blueclover.blog.web.controller;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +25,14 @@ public class AutorController {
 	@Autowired
 	private AutorService autorService;
 	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable("id") Long id) {
+		
+		autorService.delete(id);
+		
+		return "redirect:/autor/add";
+	}
+	
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
 	public ModelAndView preUpdate(@PathVariable("id") Long id) {
 		
@@ -34,14 +46,17 @@ public class AutorController {
 		return view;
 	}
 	
-	@RequestMapping(value = "/perfil/{id}", method = RequestMethod.GET)
-	public ModelAndView getAutor(@PathVariable("id") Long id) {
-		ModelAndView view = new ModelAndView();
+	@RequestMapping(value = {"/perfil/{id}","/list"}, method = RequestMethod.GET)
+	public ModelAndView getAutor(@PathVariable("id") Optional<Long> id) {
+		ModelAndView view = new ModelAndView("autor/perfil");
 		
-		Autor autor = autorService.findById(id);
-		
-		view.addObject("autor", autor);
-		view.setViewName("autor/perfil");
+		if(id.isPresent()) {
+			Autor autor = autorService.findById(id.get());
+			view.addObject("autores", Arrays.asList(autor));
+		}else {
+			List<Autor> autores = autorService.findAll();
+			view.addObject("autores", autores);
+		}
 		
 		return view;
 	}
