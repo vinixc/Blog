@@ -19,7 +19,12 @@ public class AutorService {
 	
 	@Transactional(readOnly = false)
 	public void save(Autor autor) {
-		autorRepository.save(autor);
+		if(autor.getId() == null) {
+			autorRepository.save(autor);
+		}else {
+			autorRepository.updateNomeAndBiografia(autor.getNome(),autor.getBiografia(), autor.getId());
+		}
+		
 	}
 	
 	public List<Autor> findAll(){
