@@ -40,4 +40,8 @@ public class AvatarService {
 		}
 		return avatar;
 	}
+
+	public Avatar findById(Long id) {
+		return repository.findById(id).get();
+	}
 }

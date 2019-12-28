@@ -14,6 +14,7 @@
 		<legend>Lista de Usuários</legend>
 		<table class="table">
 			<tr>
+				<th>Avatar</th>
 				<th>Nome do Usuário</th>
 				<th>E-mail</th>
 				<th>Data de Cadastro</th>
@@ -22,6 +23,10 @@
 			</tr>
 			<c:forEach var="usuario" items="${usuarios}" varStatus="i">
 			<tr bgcolor="${i.count % 2 != 0 ? '#f1f1f1' : 'white'}">
+				<td>
+					<img src="<c:url value="/avatar/load/${usuario.avatar.id}"/>"
+					style="width:25px;heigth:25px;"/>
+				</td>
 				<td>${usuario.nome}</td>
 				<td>${usuario.email}</td>
 				<td>${usuario.dataCadastro}</td>
