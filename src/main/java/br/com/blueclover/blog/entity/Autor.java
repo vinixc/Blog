@@ -1,6 +1,7 @@
 package br.com.blueclover.blog.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -36,6 +38,9 @@ public class Autor implements Serializable{
 	@OneToOne
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
+	
+	@OneToMany(mappedBy = "autor")
+	private List<Postagem> postagens;
 
 	public Long getId() {
 		return id;
@@ -67,6 +72,14 @@ public class Autor implements Serializable{
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public List<Postagem> getPostagens() {
+		return postagens;
+	}
+
+	public void setPostagens(List<Postagem> postagens) {
+		this.postagens = postagens;
 	}
 
 	@Override
