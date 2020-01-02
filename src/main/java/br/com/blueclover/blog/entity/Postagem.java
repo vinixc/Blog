@@ -17,7 +17,7 @@ public class Postagem  implements Serializable{
 	@Id
 	@SequenceGenerator(name = "seqPostagens", initialValue = 1, sequenceName = "seqPostagens", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqPostagens")
-	@Column(name = "ID_AVATAR")
+	@Column(name = "ID_POSTAGEM")
 	private Long id;
 	
 	@Column(nullable = false, unique = true, length = 60)
