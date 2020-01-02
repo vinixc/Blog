@@ -1,3 +1,5 @@
+<!-- Parei em 04:23 da aula 68 -->
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,6 +25,12 @@
 			<div class="campo">
 				<form:label path="texto">Texto do Post</form:label><br/>
 				<form:textarea path="texto" rows="15" cols="80"/>
+			</div>
+			<div class="campo">
+				<form:label path="categorias">Selecione a(s) Categoria(s)</form:label>
+				<form:select multiple="true" path="categorias">
+					<form:options items="${categorias }" itemValue="id" itemLabel="descricao"/>
+				</form:select>
 			</div>
 			<div class="campo">
 				<input type="submit" value = "Salvar">
