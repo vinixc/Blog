@@ -29,9 +29,11 @@
 				<td>${postagem.dataPostagem}</td>
 				<td>${postagem.autor.nome}</td>
 				<td>
-					<c:url var="update" value=""></c:url>
-					<a href="#" title="Editar">&#9445</a>
-					<a href="#" title="Excluir">&#9447</a>
+					<c:url var="update" value="/postagem/update/${postagem.id }"></c:url>
+					<c:url var="delete" value="/postagem/delete/${postagem.id }"></c:url>
+					
+					<a href="${update }" title="Editar">&#9445</a>
+					<a href="${delete }" title="Excluir">&#9447</a>
 				</td>
 				
 			</tr>

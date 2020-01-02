@@ -32,6 +32,11 @@ public class PostagemService {
 	}
 	
 	@Transactional(readOnly = false)
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+	
+	@Transactional(readOnly = false)
 	public void saveOrUpdate(Postagem postagem) {
 		if(postagem.getId() == null) {
 			save(postagem);
@@ -42,6 +47,15 @@ public class PostagemService {
 
 	private void update(Postagem postagem) {
 		
+		Postagem persistente = repository.findById(postagem.getId()).get();
+		if(!persistente.getTitulo().equals(postagem.getTitulo())) {
+			persistente.setTitulo(postagem.getTitulo());
+		}
+		
+		if(!persistente.getTexto().equals(postagem.getTexto())) {
+			persistente.setTexto(postagem.getTexto());
+		}
+		repository.save(persistente);
 	}
 
 	private void save(Postagem postagem) {
@@ -50,4 +64,6 @@ public class PostagemService {
 		postagem.setDataPostagem(LocalDateTime.now());
 		repository.save(postagem);
 	}
+
+	
 }

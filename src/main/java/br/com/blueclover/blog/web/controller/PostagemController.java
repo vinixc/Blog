@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -17,6 +18,21 @@ public class PostagemController {
 	
 	@Autowired
 	private PostagemService service;
+	
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+	public ModelAndView preUpdate(@PathVariable("id") Long id, ModelMap model) {
+		Postagem postagem = service.findById(id);
+		
+		model.addAttribute("postagem", postagem);
+	
+		return new ModelAndView("postagem/cadastro", model);
+	}
+	
+	@RequestMapping(value = "/delete/{id}", method = RequestMethod.GET)
+	public String delete(@PathVariable("id") Long id) {
+		service.delete(id);
+		return "redirect:/postagem/list";
+	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public ModelAndView listPostagem(ModelMap model) {
