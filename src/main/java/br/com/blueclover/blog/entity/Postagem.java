@@ -2,6 +2,7 @@ package br.com.blueclover.blog.entity;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.*;
 
@@ -35,6 +36,14 @@ public class Postagem  implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "autor_id")
 	private Autor autor;
+	
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "postagens_has_categorias",
+			joinColumns = @JoinColumn(name = "postagem_id"),
+			inverseJoinColumns = @JoinColumn(name = "categoria_id")
+	)
+	private List<Categoria> categorias;
 
 	public Long getId() {
 		return id;
@@ -82,6 +91,14 @@ public class Postagem  implements Serializable{
 
 	public void setAutor(Autor autor) {
 		this.autor = autor;
+	}
+	
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
 
 	@Override
