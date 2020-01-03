@@ -6,6 +6,9 @@ import java.util.List;
 
 import javax.persistence.*;
 
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 @Entity
 @Table(name = "postagens")
 public class Postagem  implements Serializable{
@@ -30,6 +33,7 @@ public class Postagem  implements Serializable{
 	@Column(nullable = false, unique = true, length = 60)
 	private String permalink;
 	
+	@DateTimeFormat(iso = ISO.DATE_TIME, pattern = "yyyy-MM-dd'T'HH:mm:ss")
 	@Column(name = "data_postagem", nullable = false)
 	private LocalDateTime dataPostagem;
 	
