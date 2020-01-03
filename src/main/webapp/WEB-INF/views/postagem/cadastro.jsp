@@ -27,9 +27,9 @@
 				<form:textarea path="texto" rows="15" cols="80"/>
 			</div>
 			<div class="campo">
-				<form:label path="categorias">Selecione a(s) Categoria(s)</form:label>
+				<form:label path="categorias">Selecione a(s) Categoria(s)</form:label><br/>
 				<form:select multiple="true" path="categorias">
-					<form:options items="${categorias }" itemValue="id" itemLabel="descricao"/>
+					<form:options items="${categorias}" itemValue="id" itemLabel="descricao"/>
 				</form:select>
 			</div>
 			<div class="campo">

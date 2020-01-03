@@ -7,5 +7,6 @@ import br.com.blueclover.blog.entity.Categoria;
 public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 	
 	Categoria findByDescricao(String descricao);
+	
 
 }
