@@ -23,6 +23,14 @@ public class PostagemService {
 		return repository.findAll();
 	}
 	
+	public List<Postagem> findByCategoria(String link) {
+		return repository.findByCategoriasPermalink(link);
+	}
+	
+	public List<Postagem> findByAutor(String nome) {
+		return repository.findByAutorNome(nome);
+	}
+	
 	public Postagem findByPermalink(String permalink) {
 		return repository.findByPermalink(permalink);
 	}
@@ -70,4 +78,5 @@ public class PostagemService {
 	}
 
 	
+
 }
