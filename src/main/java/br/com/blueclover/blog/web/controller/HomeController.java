@@ -19,6 +19,16 @@ public class HomeController {
 	@Autowired
 	private PostagemService postagemService; 
 	
+	@RequestMapping(value = "/{permalink}", method = RequestMethod.GET)
+	public ModelAndView openPostagem(@PathVariable("permalink") String permalink, ModelMap model) {
+		
+		Postagem postagem = postagemService.findByPermalink(permalink);
+		
+		model.addAttribute("postagem", postagem);
+		
+		return new ModelAndView("post", model);
+	}
+	
 	@RequestMapping(value = "/autor/{nome}", method = RequestMethod.GET)
 	public ModelAndView postsByAutor(@PathVariable("nome") String nome, ModelMap model) {
 		List<Postagem> postagens = postagemService.findByAutor(nome);
