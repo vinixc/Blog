@@ -8,6 +8,24 @@ a:link {
 	text-decoration: none;
 }
 
+.post-autor {
+	border: 2px solid #eee;
+	position: relative;
+	padding: 10px 10px 10px 10px;
+	color: silver;
+	font-family: sans-serif;
+	text-align: justify;
+	
+}
+
+.post-avatar {
+	float: left;
+	margin: 0 10px 0 0;
+	width: 64px;
+	height: auto;
+	position: relative;
+}
+
 .post-categ{
 	margin-bottom: 40px;
 	font-family: monospace;

@@ -9,6 +9,11 @@ import javax.persistence.*;
 @Table(name = "avatares")
 public class Avatar implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3457681315732812305L;
+
 	@Id
 	@SequenceGenerator(name = "seqAvatares", initialValue = 1, sequenceName = "seqAvatares", allocationSize = 1)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "seqAvatares")

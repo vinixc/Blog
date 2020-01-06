@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.com.blueclover.blog.entity.Categoria;
 import br.com.blueclover.blog.entity.Postagem;
 import br.com.blueclover.blog.service.CategoriaService;
 import br.com.blueclover.blog.service.PostagemService;
@@ -36,10 +35,9 @@ public class PostagemController {
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
 	public ModelAndView preUpdate(@PathVariable("id") Long id, ModelMap model) {
 		Postagem postagem = service.findById(id);
-		List<Categoria> categorias = categoriaService.findAll();
 		
 		model.addAttribute("postagem", postagem);
-		model.addAttribute("categorias", categorias);
+		model.addAttribute("categorias", categoriaService.findAll());
 		
 		return new ModelAndView("postagem/cadastro", model);
 	}

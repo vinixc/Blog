@@ -9,8 +9,7 @@
 </head>
 <body>
 	<c:import url="../menu.jsp"/>
-	<br/>
-	<fieldset>
+
 	<c:url var="save" value="/categoria/save"/>
 	<form:form modelAttribute="categoria" action="${save}" method="post">
 		
@@ -53,7 +52,6 @@
 			</tr>
 			</c:forEach>
 		</table>
-	</fieldset>
 	</fieldset>
 </body>
 </html>
